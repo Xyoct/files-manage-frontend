@@ -1,5 +1,8 @@
 <template>
     <div class="_table">
+        <el-row class="upload_wrapper">
+            <el-button type="primary" size="mini">上传文件</el-button>
+        </el-row>
         <el-table
         :data="tableData"
         stripe
@@ -66,6 +69,10 @@
 ._table {
     width: 700px;
     margin: 0 auto;
+}
+.upload_wrapper {
+    text-align: left;
+    margin-bottom: 20px;
 }
 .user_wrapper {
     float: right;
