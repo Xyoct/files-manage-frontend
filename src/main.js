@@ -3,17 +3,32 @@ import App from './App.vue'
 import router from './router'
 
 import axios from './axios'
-
-import ElementUI from 'element-ui';
+import { Container, Header, Main, Row, Col, Upload, Loading, Message, MessageBox, Dialog, Pagination, Input, Button, Table, TableColumn } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 if (process.env.NODE_ENV === 'production') {
-    Vue.prototype.$baseUrl = ''
+    Vue.prototype.$baseUrl = 'http://www.bestlifebestyue.com/files-manage/'
 } else {
     Vue.prototype.$baseUrl = 'http://localhost:3050/'
 }
 
-Vue.use(ElementUI);
+Vue.use(Container);
+Vue.use(Header);
+Vue.use(Main);
+Vue.use(Row);
+Vue.use(Col);
+Vue.use(Upload)
+Vue.use(Dialog)
+Vue.use(Pagination)
+Vue.use(Input)
+Vue.use(Button)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Loading.directive);
+
+Vue.prototype.$alert = MessageBox.alert;
+Vue.prototype.$confirm = MessageBox.confirm;
+Vue.prototype.$message = Message;
 
 Vue.config.productionTip = false
 

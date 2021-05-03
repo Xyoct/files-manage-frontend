@@ -1,5 +1,5 @@
 <template>
-    <div class="_table">
+    <div class="_table" v-loading.fullscreen.lock="fullscreenLoading">
         <el-row>
             <el-col :span="10">
                 <el-input v-model="keyWord" clearable size="mini" placeholder="关键字搜索（文件名，上传者）"></el-input>
@@ -19,6 +19,7 @@
                 :on-success="handleSuccess"
                 :on-error="handleError"
                 :before-remove="beforeRemove"
+                :before-upload="beforeUpload"
                 :limit="3"
                 :on-exceed="handleExceed"
                 :file-list="fileList">
@@ -65,15 +66,22 @@
 </template>
 <script>
     import moment from 'moment'
+
+    import { Input, Button, Table, TableColumn } from 'element-ui';
     export default {
 
         name: '',
         components: {
+            Input,
+            Button,
+            Table,
+            TableColumn
         },
         props: {
         },
         data () {
             return {
+                fullscreenLoading: false,
                 actionUrl:  this.$baseUrl + 'api/upload-file/',
                 headerSet: {
                     "token": localStorage.getItem('token') || ''
@@ -126,6 +134,7 @@
                 })
             },
             handleSuccess(response, file, fileList) {
+                this.fullscreenLoading = false
                 this.$refs.upload.clearFiles()
                 this.fileList = []
                 if (response.code == 0) {
@@ -139,9 +148,13 @@
                 }
             },
             handleError(err, file, fileList) {
+                this.fullscreenLoading = false
                 this.$refs.upload.clearFiles()
                 this.fileList = []
                 this.$message.error(err || `上传出错，请重新上传！`);
+            },
+            beforeUpload(file) {
+                this.fullscreenLoading = true
             },
             handleRemove(file, fileList) {
                 console.log(file, fileList);
@@ -176,7 +189,7 @@
                             })
                             this.getList()
                         } else {
-                            this.$message.error(data.msg || `请求失败！`);
+                            this.$message.error(res.msg || `请求失败！`);
                         }
 
                     })

@@ -80,7 +80,7 @@
                         localStorage.setItem('account', res.data.account)
                         window.location.reload()
                     } else {
-                        this.$alert('密码错误！', '警告', {
+                        this.$alert(res.msg || '登录失败！', '警告', {
                             type: 'error',
                             confirmButtonText: '确定',
                             callback: action => { }
@@ -100,8 +100,9 @@
                         message: '登出成功!'
                     });
                     this.userName = ''
-                    localStorage.setItem('token', res,data.token)
-                    localStorage.setItem('account', res,data.account)
+                    localStorage.removeItem('token')
+                    localStorage.removeItem('account')
+                    window.location.reload()
                 }).catch(() => { });
             }
         }
