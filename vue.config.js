@@ -1,5 +1,5 @@
 module.exports = {
-    outputDir: 'files-manage',
+    outputDir: 'file-manage',
     publicPath: process.env.NODE_ENV === 'production' ? '/static/files-manage/': '/',
     devServer: {
         proxy: {
