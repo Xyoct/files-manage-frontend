@@ -12,7 +12,7 @@ let options = {
 var loadingInstance;
 
 var instance = axios.create({
-    baseURL: process.env.NODE_ENV === 'production'? 'http://www.bestlifebestyue.com/files-manage/api': '/api'
+    baseURL: process.env.NODE_ENV === 'production'? 'http://www.bestlifebestyue.com/file-manage/api': '/api'
 });
 
 // 添加请求拦截器

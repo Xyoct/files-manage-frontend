@@ -2,7 +2,7 @@ const FileManagerPlugin = require("filemanager-webpack-plugin");
 const packageName = 'file-manage'
 module.exports = {
     outputDir: 'file-manage',
-    publicPath: process.env.NODE_ENV === 'production' ? '/static/files-manage/': '/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/static/file-manage/': '/',
     devServer: {
         proxy: {
             '/api/': {
