@@ -7,7 +7,7 @@ import { Container, Header, Main, Row, Col, Upload, Loading, Message, MessageBox
 import 'element-ui/lib/theme-chalk/index.css';
 
 if (process.env.NODE_ENV === 'production') {
-    Vue.prototype.$baseUrl = 'http://www.bestlifebestyue.com/files-manage/'
+    Vue.prototype.$baseUrl = 'http://www.bestlifebestyue.com/file-manage/'
 } else {
     Vue.prototype.$baseUrl = 'http://localhost:3050/'
 }
